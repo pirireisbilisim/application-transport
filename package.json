@@ -1,5 +1,5 @@
 {
-  "name": "iframepackage",
+  "name": "@pirireis/application-transport",
   "version": "1.0.7",
   "description": "Send and Get messages for iframe",
   "license": "",
