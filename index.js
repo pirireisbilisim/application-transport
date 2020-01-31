@@ -46,15 +46,25 @@ class Transport {
      * @param callback function
      */
     on(eventType, callback) {
-        window.addEventListener('message', (event) => {
-            try {
-                const eventData = JSON.parse(event.data);
-                if (eventData.type === `${this.applicationId}--${eventType}`) {
-                    callback(event.data);
-                }
-            } catch (e) {
+        window.addEventListener('message', this._messageListener, false);
+    }
+
+    /**
+     * @private
+     * @param event
+     */
+    _messageListener = (event) => {
+        try {
+            const eventData = JSON.parse(event.data);
+            if (eventData.type === `${this.applicationId}--${eventType}`) {
+                callback(event.data);
             }
-        }, false);
+        } catch (e) {
+        }
+    };
+
+    destroy () {
+        window.removeEventListener('message', this._messageListener, true);
     }
 }
 
