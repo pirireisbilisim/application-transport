@@ -1,0 +1,8 @@
+{
+  "name": "iframepackage",
+  "version": "1.0.6",
+  "description": "Send and Get messages for iframe",
+  "license": "",
+  "repository": "",
+  "main": "index.js"
+}
