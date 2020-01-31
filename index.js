@@ -7,10 +7,10 @@ class Transport {
         this.iframeId = id;
     }
 
-    sendMessage () {
+    sendMessage (...data) {
         const iframe = document.getElementById(this.iframeId);
         iframe.contentWindow.postMessage(
-            {type: 'coordinates', value: coordinates},
+            {type: 'coordinates', ...data},
             appUrl,
         );
 
