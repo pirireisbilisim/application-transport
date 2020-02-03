@@ -65,4 +65,4 @@ class Transport {
 	}
 }
 
-module.export = {EventTypes, Transport};
+module.exports = {EventTypes, Transport};

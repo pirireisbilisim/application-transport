@@ -27,8 +27,10 @@ const TerserPlugin = require('terser-webpack-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
-	mode: 'development',
-
+	mode: 'production',
+	output: {
+		libraryTarget: "umd"
+	},
 	plugins: [
 		new webpack.ProgressPlugin(),
 		new workboxPlugin.GenerateSW({
@@ -47,21 +49,21 @@ module.exports = {
 		]
 	},
 
-	optimization: {
-		minimizer: [new TerserPlugin()],
-
-		splitChunks: {
-			cacheGroups: {
-				vendors: {
-					priority: -10,
-					test: /[\\/]node_modules[\\/]/
-				}
-			},
-
-			chunks: 'async',
-			minChunks: 1,
-			minSize: 30000,
-			name: true
-		}
-	}
+	// optimization: {
+	// 	minimizer: [new TerserPlugin()],
+	//
+	// 	splitChunks: {
+	// 		cacheGroups: {
+	// 			vendors: {
+	// 				priority: -10,
+	// 				test: /[\\/]node_modules[\\/]/
+	// 			}
+	// 		},
+	//
+	// 		chunks: 'async',
+	// 		minChunks: 1,
+	// 		minSize: 30000,
+	// 		name: true
+	// 	}
+	// }
 };
